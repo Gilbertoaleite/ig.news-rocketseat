@@ -12,7 +12,7 @@ export function SignIButton() {
    return isUserLoggedIn ? (
 			<button type='button' className={styles.SignIButton}>
 				<FaGithub color='#04d361' />
-         Gilberto A Leite
+         Gilberto A  Leite
          <FiX color="#737380" className={styles.close}/>
 			</button>
 		) : (
