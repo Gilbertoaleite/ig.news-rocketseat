@@ -10,7 +10,8 @@ import styles from './home.module.scss';
 // import Image from 'next/image';
 import { FaRegHandSpock } from 'react-icons/fa';
 import  SubscribeButton  from '../components/SubscribeButton';
-import { stripe } from './services/stripe';
+import { stripe } from '../components/services/stripe';
+
 
 interface HomeProps{
 	product: {
@@ -29,7 +30,7 @@ export default function Home({ product }: HomeProps) {
 				<section className={styles.hero}>
 					<span>{<FaRegHandSpock color='#eba417' />} Hey, welcome</span>
 					<h1>
-						News about the <span>React</span> world
+						News about the <span>React</span> world.
 					</h1>
 					<p>
 						Get access to all the publications <br />
@@ -40,28 +41,26 @@ export default function Home({ product }: HomeProps) {
 				<img src='/images/avatar.svg' alt='Girl coding' />
 			</main>
 		</>
-	);
+	)
 }
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-
 export const getStaticProps: GetStaticProps = async () => {
-	const price = await stripe.prices.retrieve('price_1KarW5H6qWHyEwaFdSB71aCa', {
+		const price = await stripe.prices.retrieve('price_1KarW5H6qWHyEwaFdSB71aCa') 
 		
-	});
+		const product = {
+			priceId: price.id,
+			amount: new Intl.NumberFormat('en-US', {
+				style: 'currency',
+				currency: 'USD',
+			}).format(price.unit_amount / 100),
+		};
 
-	const product = {
-		priceId: price.id,
-		amount: new Intl.NumberFormat('en-US', {
-			style: 'currency',
-			currency: 'USD',
-		}).format(price.unit_amount / 100),
+		return {
+			props: {
+				product,
+			},
+			revalidate: 60 * 60 * 24, //24 hrs
+		}
 	};
 
-	return {
-		props: {
-			product,
-		},
-		revalidate: 60 * 60 * 24, //24 hrs
-	}
-};
+
+//  export const getServerSideProps: GetServerSideProps = async () => {
