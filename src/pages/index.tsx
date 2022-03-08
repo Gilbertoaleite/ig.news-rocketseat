@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import styles from './home.module.scss';
+
 // import Image from 'next/image';
 import { FaRegHandSpock } from 'react-icons/fa';
+import {  SubscribeButton } from '../components/SubscribeButton';
 
 export default function Home() {
 return (
@@ -13,13 +15,15 @@ return (
 		</Head>
 		<main className={styles.contentContainer}>
 			<section className={styles.hero}>
-				<span>{<FaRegHandSpock color="yellow" />} Hey, welcome</span>
-				<h1>News about the <span>React</span> world</h1>
+				<span>{<FaRegHandSpock color='yellow' />} Hey, welcome</span>
+				<h1>
+					News about the <span>React</span> world
+				</h1>
 				<p>
 					Get access to all the publications <br />
 					<span>for $9.90 month</span>
-			</p>
-
+				</p>
+				<SubscribeButton />
 			</section>
 			<img src='/images/avatar.svg' alt='Girl coding' />
 		</main>
