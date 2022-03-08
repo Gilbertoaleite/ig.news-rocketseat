@@ -1,17 +1,20 @@
+/* eslint-disable @next/next/no-img-element */
 /** @format */
 
-import Image from 'next/image';
+// import Image from 'next/image';
+import { SignIButton } from '../SignInButton';
 import styles from './styles.module.scss';
 
 export function Header() {
 	return (
 		<header className={styles.headerContainer}>
 			<div className={styles.headerContent}>
-				<Image src='/images/logo.svg' alt='logo' width={70} height={70} />
+				<img src='/images/logo.svg' alt='logo' />
 				<nav>
-					<a href='#'>Home</a>
+					<a className={styles.active} href='#'>Home</a>
 					<a href='#'>Post</a>
 				</nav>
+				<SignIButton/>
 			</div>
 		</header>
 	);
