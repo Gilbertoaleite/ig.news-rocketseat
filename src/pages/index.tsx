@@ -9,7 +9,7 @@ import styles from './home.module.scss';
 
 // import Image from 'next/image';
 import { FaRegHandSpock } from 'react-icons/fa';
-import {  SubscribeButton } from '../components/SubscribeButton';
+import  SubscribeButton  from '../components/SubscribeButton';
 import { stripe } from './services/stripe';
 
 interface HomeProps{

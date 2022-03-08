@@ -2,10 +2,10 @@
 /** @format */
 
 // import Image from 'next/image';
-import { SignIButton } from '../SignInButton';
+import  SignIButton  from '../SignInButton';
 import styles from './styles.module.scss';
 
-export function Header() {
+export default function Header() {
 	return (
 		<header className={styles.headerContainer}>
 			<div className={styles.headerContent}>
